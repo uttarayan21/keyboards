@@ -1,5 +1,5 @@
 
-### Corne 
+## Corne 
 Board: [petejohanson/crkbd][corne-pcb]  
 Firmware: [haobogu/rmk][rmk]  
 Model: [printables/void/crkbd][corne-3d-model]  
@@ -8,6 +8,7 @@ Youtube: [youtube/EIGA/wireless-corne-keyboard-perfected][wireless-corne]
 
 #### Required
 Note: This was taken from a stackskb.com listing of a wired corne kit and adapted to be a wireless kit   
+Possibly more items will be needed.
 
 - 1x PCB Set (left and right half of PCB)                   (we printed them)
 - 2x Top Plates                                             (we printed them)
@@ -24,7 +25,36 @@ Other things that you'll need but not part of the keyboard
 
 Soldering Iron: Pinecil v2 (or any soldering iron you have)  
 
-#### Ordering parts
+### Planning
+- pcb:
+    We need to export the corne kicad files as gerber first.  
+    To do so first install kicad  
+    for macos you can just do  
+    ```sh
+    brew install --cask kicad
+    ```
+    for windows you'll have to manually install by navigating to the website  
+    and for linux use whatever package manager your distro comes with.
+    In kicad open the file `corne-ultralight.kicad_pro` file  
+    Then click on the pcb editor  
+    On the pcb editor click on the plot button ( the one that looks like a printer with legs )  
+    Then click on Plot and then on Generate Drill files  
+    This should make a gerbers folder on that same directory.  
+    Zip it up and send it for printing.  
+- hotswap sockets:
+    I have an old sofle v2 that I bought but it turned out terrible.  
+    I'll harvest that pcb for the diodes and hotswap sockets.  
+    I don't have a desoldering pump so I'll just try to use desoldering wicks to get rid of all the connections  
+- firmware:
+    Right now I plan on using [rmk][rmk] which is a rust library for building keyboard firmware to have absolute control over what's going on in the keyboards.
+    I have some usual generic keymaps that I always program in
+    capslock -> control
+    left control -> fn(1)
+    command <-> option (only on macos)
+    I'm using a nrf52840 which should be supported by this.
+    I'm also using a nice!view display so I'll probably have to write some animations / apps for the display.
+
+### Ordering parts
 - pcb: I am ordering from robu.in since I am from india and its cheapest option available
     robu.in needs a gerber zip file (same as jlcpcb).
 
@@ -32,46 +62,6 @@ Soldering Iron: Pinecil v2 (or any soldering iron you have)
     For the case you can get all the stl files from the links above.
     I used the 600mah battery and 6 column ones.
     For materials I used black abs at standard quality and 20% infill
-
-#### Build Steps
-0. Prepping
-    - pcb:
-        We need to export the corne kicad files as gerber first.  
-        To do so first install kicad  
-        for macos you can just do  
-        ```sh
-        brew install --cask kicad
-        ```
-        for windows you'll have to manually install by navigating to the website  
-        and for linux use whatever package manager your distro comes with.
-        In kicad open the file `corne-ultralight.kicad_pro` file  
-        Then click on the pcb editor  
-        On the pcb editor click on the plot button ( the one that looks like a printer with legs )  
-        Then click on Plot and then on Generate Drill files  
-        This should make a gerbers folder on that same directory.  
-        Zip it up and send it for printing.  
-    - hotswap sockets:
-        I have an old sofle v2 that I bought but it turned out terrible.  
-        I'll harvest that pcb for the diodes and hotswap sockets.  
-        I don't have a desoldering pump so I'll just try to use desoldering wicks to get rid of all the connections  
-    - firmware:
-        Right now I plan on using [rmk][rmk] which is a rust library for building keyboard firmware to have absolute control over what's going on in the keyboards.
-        I have some usual generic keymaps that I always program in
-        capslock -> control
-        left control -> fn(1)
-        command <-> option (only on macos)
-        I'm using a nrf52840 which should be supported by this.
-        I'm also using a nice!view display so I'll probably have to write some animations / apps for the display.
-
-
-
-
-
-### Timeline of the events
-1. Timeline
-    15th March 2025: The Pinecil V2 arrived
-    17th March 2025: The nrf52840's arrived
-
 
 
 [corne-pcb]: https://github.com/petejohanson/crkbd/tree/board/corne-ultralight
