@@ -19,11 +19,10 @@ Possibly more items will be needed.
 - 20x 5mm screws                                            (bought from robu.in)
 - 2x 2-pin SPST Switch (?)                                  (bought from robu.in)
 - 45x SOD-123 Diodes (1N4148W)                              (bought from robu.in)
-- 45x Gateron Hotswap sockets                               (bought from neomacro.in)
 
 Other things that you'll need but not part of the keyboard  
 
-Soldering Iron: Pinecil v2 (or any soldering iron you have)  
+Soldering Iron: Pinecil v2 / Fnirsi HS-02 (or any soldering iron you have)
 
 ### Planning
 - pcb:
@@ -59,9 +58,32 @@ Soldering Iron: Pinecil v2 (or any soldering iron you have)
     robu.in needs a gerber zip file (same as jlcpcb).
 
 - case:
-    For the case you can get all the stl files from the links above.
+    ~~For the case you can get all the stl files from the links above.
     I used the 600mah battery and 6 column ones.
-    For materials I used black abs at standard quality and 20% infill
+    For materials I used black abs at standard quality and 20% infill~~
+    Update: I got a 3d printer and printed them myself.
+
+### Steps
+Align the diodes to the board with the line on the diode facing the same direction as the arrow on the pcb
+![diode](../assets/corne/diode.jpeg)
+![diode-pcb](../assets/corne/pcb-diode.jpeg)
+You can use through hole sod123 diodes or you can use smd diodes.  
+Soldering smd diodes are harder than through hole diodes so you may want to go with that if you don't have experience soldering surface mount components.  
+
+Next you solder the microcontroller into the pcb.
+
+Next you mount your switches to the plate (FR4 / Acrylic / 3D Printed).
+And then solder the switches to the pcb.
+It is important to mount the switches to the plate first since once soldered you can't mount the plate without desoldering.
+
+![plate](../assets/corne/plate.jpeg)
+
+Then you just solder the battery wires to the red-black terminals and put it inside of the case and you have your keyboard.
+(Note: To mount it you need m2 screws they are self tapping screws so you don't need heat set threaded inserts for it)
+![keyboard](../assets/corne/final.jpeg)
+
+And it was so fun and easy that I built 2 of them.
+![keyboards](../assets/corne/final2.jpeg)
 
 
 [corne-pcb]: https://github.com/petejohanson/crkbd/tree/board/corne-ultralight
